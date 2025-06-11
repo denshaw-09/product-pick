@@ -1,0 +1,17 @@
+[build]
+  # This command tells Netlify how to install your Python dependencies.
+  command = "pip install -r requirements.txt"
+  
+  # This specifies the directory where Netlify will place the serverless functions.
+  # It must match the directory name you created.
+  functions = "netlify/functions"
+  
+  # This specifies the directory for your static files (HTML, CSS, JS).
+  publish = "static"
+
+# This section tells Netlify to redirect all traffic to our serverless function,
+# allowing our FastAPI app to handle all the routing (/, /api/..., etc.).
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/main"
+  status = 200
